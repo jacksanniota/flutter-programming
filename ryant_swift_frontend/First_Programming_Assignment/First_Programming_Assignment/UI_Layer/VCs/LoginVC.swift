@@ -24,6 +24,12 @@ class LoginVC: UIViewController {
         self.view.addSubview(self.dimmingView)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if let _ = User.decodeUserDefaults() {
+            self.performSegue(withIdentifier: "loginSuccess", sender: self)
+        }
+    }
+    
     @IBAction func loginPressed(_ sender: UIButton) {
         if usernameTextField.text?.isEmpty ?? true || passwordTextField.text?.isEmpty ?? true {
             let alert = UIAlertController(title: "Error", message: "You must fill out all information", preferredStyle: .alert)

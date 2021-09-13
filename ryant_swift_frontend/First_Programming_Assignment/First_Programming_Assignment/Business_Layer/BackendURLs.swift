@@ -9,7 +9,7 @@
 import Foundation
 
 class BackendURLs: NSObject {
-    static let BASE_PATH = "http://127.0.0.1:8000"
+    static let BASE_PATH = "https://masfirstassignment.herokuapp.com"
     static let API_PATH = BASE_PATH + "/api"
     
     // Users

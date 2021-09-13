@@ -25,7 +25,7 @@ SECRET_KEY = '8g82k8!lrbw%5-74tko***1%hj85z0nq_lam8$j9kaxb11uf+m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['masdjangoapp.herokuapp.com']
+ALLOWED_HOSTS = ['masfirstassignment.herokuapp.com']
 
 
 # Application definition
