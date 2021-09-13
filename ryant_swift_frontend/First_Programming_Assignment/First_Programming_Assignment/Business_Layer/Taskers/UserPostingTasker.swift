@@ -14,7 +14,7 @@ class UserPostingTasker: NSObject {
         super.init()
     }
     
-    func createUserPosting(user: User, message: String, lat: Float, long: Float, failure: @escaping () -> Void, success: @escaping (_ userPostings: UserPosting?) -> Void) {
+    func createUserPosting(user: User, message: String, lat: Float, long: Float, failure: @escaping () -> Void, success: @escaping (_ userPosting: UserPosting?) -> Void) {
         let params = [
             "user_pk" : user.pk!,
             "message" : message,
@@ -26,6 +26,40 @@ class UserPostingTasker: NSObject {
             failure()
         }, success: {(data, response) in
             if response.statusCode != 201 {
+                failure()
+                return
+            }
+            let userPosting = UserPosting.parseJson(jsonData: data)
+            success(userPosting)
+        })
+    }
+    
+    func upvotePosting(posting: UserPosting, failure: @escaping () -> Void, success: @escaping (_ userPosting: UserPosting?) -> Void) {
+        let params = [
+            "posting_pk" : posting.pk!,
+        ] as [String : Any]
+        let webCallTasker: WebCallTasker = WebCallTasker()
+        webCallTasker.makePostRequest(forURL: BackendURLs.UPVOTE_POSTING_URL, withParams: params, failure: {
+            failure()
+        }, success: {(data, response) in
+            if response.statusCode != 200 {
+                failure()
+                return
+            }
+            let userPosting = UserPosting.parseJson(jsonData: data)
+            success(userPosting)
+        })
+    }
+    
+    func downvotePosting(posting: UserPosting, failure: @escaping () -> Void, success: @escaping (_ userPosting: UserPosting?) -> Void) {
+        let params = [
+            "posting_pk" : posting.pk!,
+        ] as [String : Any]
+        let webCallTasker: WebCallTasker = WebCallTasker()
+        webCallTasker.makePostRequest(forURL: BackendURLs.DOWNVOTE_POSTING_URL, withParams: params, failure: {
+            failure()
+        }, success: {(data, response) in
+            if response.statusCode != 200 {
                 failure()
                 return
             }

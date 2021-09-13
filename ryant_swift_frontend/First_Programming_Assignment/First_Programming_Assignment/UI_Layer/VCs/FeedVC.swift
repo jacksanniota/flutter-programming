@@ -18,6 +18,7 @@ class FeedVC: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, 
     var locationManager: CLLocationManager!
     var currentLat: Float = 0.0
     var currentLong: Float = 0.0
+    var selectedPosting: UserPosting!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +73,11 @@ class FeedVC: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, 
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedPosting = self.postings[indexPath.row]
+        self.performSegue(withIdentifier: "postDetails", sender: self)
+    }
+    
     func getFeed() {
         let loaderView: LoaderView = LoaderView(title: "Loading...", onView: self.dimmingView)
         self.view.addSubview(loaderView)
@@ -89,6 +95,15 @@ class FeedVC: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, 
                 self.tableView.reloadData()
             }
         })
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "postDetails" {
+            if let destination = segue.destination as? PostingDetailVC {
+                destination.currentPosting = self.selectedPosting
+            }
+        }
     }
 
 }
