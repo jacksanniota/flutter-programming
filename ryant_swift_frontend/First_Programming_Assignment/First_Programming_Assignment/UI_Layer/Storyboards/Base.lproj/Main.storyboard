@@ -12,57 +12,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginVC" customModule="First_Programming_Assignment" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U4a-hr-mRX">
-                                <rect key="frame" x="65" y="139" width="284" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="username"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Chb-6a-D59">
-                                <rect key="frame" x="65" y="213" width="284" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxX-zv-5Tr">
-                                <rect key="frame" x="20" y="262" width="374" height="30"/>
-                                <state key="normal" title="Login"/>
-                                <connections>
-                                    <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yrm-h7-aM6"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RwQ-8M-pY6">
-                                <rect key="frame" x="20" y="302" width="374" height="30"/>
-                                <state key="normal" title="Don't have an account? Register"/>
-                                <connections>
-                                    <action selector="registerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g5V-en-goz"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="YxX-zv-5Tr" firstAttribute="top" secondItem="Chb-6a-D59" secondAttribute="bottom" constant="15" id="2PW-qa-1QY"/>
-                            <constraint firstItem="YxX-zv-5Tr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="AAZ-nd-zdq"/>
-                            <constraint firstItem="U4a-hr-mRX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="95" id="DRm-Fn-iKF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Chb-6a-D59" secondAttribute="trailing" constant="65" id="OqF-8a-Fw0"/>
-                            <constraint firstItem="U4a-hr-mRX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="65" id="Sq1-5I-rIO"/>
-                            <constraint firstItem="RwQ-8M-pY6" firstAttribute="top" secondItem="YxX-zv-5Tr" secondAttribute="bottom" constant="10" id="YcJ-z2-Qek"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RwQ-8M-pY6" secondAttribute="trailing" constant="20" id="Yl5-yX-mFz"/>
-                            <constraint firstItem="RwQ-8M-pY6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="fQa-oe-O8y"/>
-                            <constraint firstItem="Chb-6a-D59" firstAttribute="top" secondItem="U4a-hr-mRX" secondAttribute="bottom" constant="40" id="lPA-x6-9TN"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YxX-zv-5Tr" secondAttribute="trailing" constant="20" id="quN-ne-zMq"/>
-                            <constraint firstItem="Chb-6a-D59" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="65" id="raL-50-IXD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U4a-hr-mRX" secondAttribute="trailing" constant="65" id="vnD-kj-Ik2"/>
-                        </constraints>
-                    </view>
                     <connections>
-                        <outlet property="loginButton" destination="YxX-zv-5Tr" id="vmg-Lv-ApE"/>
-                        <outlet property="passwordTextField" destination="Chb-6a-D59" id="BPk-wj-SHQ"/>
-                        <outlet property="registerButton" destination="RwQ-8M-pY6" id="MDA-kX-mEI"/>
-                        <outlet property="usernameTextField" destination="U4a-hr-mRX" id="Fkc-wa-Dch"/>
                         <segue destination="NWT-vs-HUg" kind="presentation" identifier="goToRegister" modalPresentationStyle="fullScreen" id="O8z-ws-UOQ"/>
                         <segue destination="ZdI-yL-gEA" kind="presentation" identifier="loginSuccess" modalPresentationStyle="fullScreen" id="7Yn-b5-MSo"/>
                     </connections>
