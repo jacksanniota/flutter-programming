@@ -6,6 +6,9 @@ from django.contrib.auth import authenticate
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 
+def home(request):
+    return HttpResponse("This is the backend for Ryan Tobin's and Jack Sanniota's first programming assignment in CS 4261!")
+
 # API Endpoint to ensure the API is running
 def test_api(request):
     return HttpResponse("The API is loading!")
