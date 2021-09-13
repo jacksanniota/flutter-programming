@@ -1,6 +1,6 @@
 # Django API for CS 4261 First Assignment
 This API is setup, configured, and deployed with Heroku
-It uses Django. For more information on django, view the [documentation](https://docs.djangoproject.com/en/3.2/)
+It uses Django. For more information on django, view the [documentation](https://docs.djangoproject.com/en/3.2/).
 
 ### Database design:
 #### The database consists of 2 models: User and UserPosting:
