@@ -3,3 +3,9 @@
 *.sqlite3
 
 *.pyc
+
+*.pbxproj
+
+*.xcuserstate
+
+*.xcworkspacedata
