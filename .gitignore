@@ -121,3 +121,9 @@ app.*.symbols
 *.sqlite3
 
 *.pyc
+
+*.pbxproj
+
+*.xcuserstate
+
+*.xcworkspacedata

@@ -69,9 +69,16 @@ def create_user_posting(request):
         except User.DoesNotExist:
             return HttpResponse(status=400)
         posting = UserPosting.objects.create(poster=user, message=request.POST['message'], location_lat=request.POST['lat'], location_long=request.POST['long'])
+        poster = {
+            'pk' : posting.poster.pk,
+            'username' : posting.poster.username,
+            'email' : posting.poster.email,
+            'first_name' : posting.poster.first_name,
+            'last_name' : posting.poster.last_name
+        }
         return JsonResponse({
             'pk' : posting.pk,
-            'poster' : posting.poster.pk,
+            'poster' : poster,
             'message' : posting.message,
             'created_date' : timezone.localtime(posting.created_date).strftime("%m/%d/%Y %I:%M"),
             'vote_count' : posting.vote_count,
@@ -89,9 +96,16 @@ def get_all_user_postings(request):
         user_postings = UserPosting.objects.all().order_by('-created_date')
         user_postings_json = list()
         for posting in user_postings:
+            poster = {
+                'pk' : posting.poster.pk,
+                'username' : posting.poster.username,
+                'email' : posting.poster.email,
+                'first_name' : posting.poster.first_name,
+                'last_name' : posting.poster.last_name
+            }
             posting_json = {
                 'pk' : posting.pk,
-                'poster' : posting.poster.pk,
+                'poster' : poster,
                 'message' : posting.message,
                 'created_date' : timezone.localtime(posting.created_date).strftime("%m/%d/%Y %I:%M"),
                 'vote_count' : posting.vote_count,
@@ -99,9 +113,7 @@ def get_all_user_postings(request):
                 'long' : posting.location_long,
             }
             user_postings_json.append(posting_json)
-        return JsonResponse({
-            'postings' : user_postings_json
-        }, status=200)
+        return JsonResponse(user_postings_json, safe=False, status=200)
     else:
         return HttpResponse(status=400)
 
@@ -115,9 +127,16 @@ def upvote_posting(request):
         except UserPosting.DoesNotExist:
             return HttpResponse(status=400)
         user_posting.upvote()
+        poster = {
+            'pk' : user_posting.poster.pk,
+            'username' : user_posting.poster.username,
+            'email' : user_posting.poster.email,
+            'first_name' : user_posting.poster.first_name,
+            'last_name' : user_posting.poster.last_name
+        }
         return JsonResponse({
             'pk' : user_posting.pk,
-            'poster' : user_posting.poster.pk,
+            'poster' : poster,
             'message' : user_posting.message,
             'created_date' : timezone.localtime(user_posting.created_date).strftime("%m/%d/%Y %I:%M"),
             'vote_count' : user_posting.vote_count,
@@ -138,9 +157,16 @@ def downvote_posting(request):
         except UserPosting.DoesNotExist:
             return HttpResponse(status=400)
         user_posting.downvote()
+        poster = {
+            'pk' : user_posting.poster.pk,
+            'username' : user_posting.poster.username,
+            'email' : user_posting.poster.email,
+            'first_name' : user_posting.poster.first_name,
+            'last_name' : user_posting.poster.last_name
+        }
         return JsonResponse({
             'pk' : user_posting.pk,
-            'poster' : user_posting.poster.pk,
+            'poster' : poster,
             'message' : user_posting.message,
             'created_date' : timezone.localtime(user_posting.created_date).strftime("%m/%d/%Y %I:%M"),
             'vote_count' : user_posting.vote_count,
@@ -160,9 +186,16 @@ def get_posting(request):
             user_posting = UserPosting.objects.get(pk=request.GET['posting_pk'])
         except UserPosting.DoesNotExist:
             return HttpResponse(status=400)
+        poster = {
+            'pk' : user_posting.poster.pk,
+            'username' : user_posting.poster.username,
+            'email' : user_posting.poster.email,
+            'first_name' : user_posting.poster.first_name,
+            'last_name' : user_posting.poster.last_name
+        }
         return JsonResponse({
             'pk' : user_posting.pk,
-            'poster' : user_posting.poster.pk,
+            'poster' : poster,
             'message' : user_posting.message,
             'created_date' : timezone.localtime(user_posting.created_date).strftime("%m/%d/%Y %I:%M"),
             'vote_count' : user_posting.vote_count,
