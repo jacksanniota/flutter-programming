@@ -40,9 +40,9 @@ class UserPosting: NSObject {
         let message = posting_json["message"] as! String
         let createdDate = posting_json["created_date"] as! String
         let voteCount = posting_json["vote_count"] as! Int
-        let locationLat = posting_json["lat"] as! Float
-        let locationLong = posting_json["long"] as! Float
-        return UserPosting(pk: pk, poster: poster, message: message, createdDate: createdDate, voteCount: voteCount, locationLat: locationLat, locationLong: locationLong)
+        let locationLat = posting_json["lat"] as! NSNumber
+        let locationLong = posting_json["long"] as! NSNumber
+        return UserPosting(pk: pk, poster: poster, message: message, createdDate: createdDate, voteCount: voteCount, locationLat: locationLat.floatValue, locationLong: locationLong.floatValue)
     }
 
 }

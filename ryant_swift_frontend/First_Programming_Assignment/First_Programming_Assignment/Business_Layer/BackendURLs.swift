@@ -17,8 +17,8 @@ class BackendURLs: NSObject {
     static let LOGIN_USER_URL = API_PATH + "/login"
     
     // Postings
-    static let CREATE_POSTING_URL = API_PATH + "posting/create"
-    static let GET_POSTINGS_URL = API_PATH + "postings/all"
-    static let UPVOTE_POSTING_URL = API_PATH + "posting/upvote"
-    static let DOWNVOTE_POSTING_URL = API_PATH + "posting/downvote"
+    static let CREATE_POSTING_URL = API_PATH + "/posting/create"
+    static let GET_POSTINGS_URL = API_PATH + "/postings/all"
+    static let UPVOTE_POSTING_URL = API_PATH + "/posting/upvote"
+    static let DOWNVOTE_POSTING_URL = API_PATH + "/posting/downvote"
 }

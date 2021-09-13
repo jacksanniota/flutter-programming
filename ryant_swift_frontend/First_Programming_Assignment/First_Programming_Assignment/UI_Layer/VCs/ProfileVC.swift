@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ProfileVC: UIViewController {
     
@@ -25,6 +26,10 @@ class ProfileVC: UIViewController {
         self.fullNameLabel.text = self.currentUser.firstName + " " + self.currentUser.lastName
         self.emailAddressLabel.text = self.currentUser.email
         self.usernameLabel.text = self.currentUser.username
+        
+        let locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
