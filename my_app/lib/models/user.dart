@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
-import 'dart:convert';
+import 'dart:convert' show jsonDecode;
 
 // class _MyAppState extends State<MyApp> {
 //   late Future<Album> futureAlbum;
@@ -23,11 +23,11 @@ Future<Login> register(String username, String password, String first_name,
         "last_name": last_name,
         "email": email
       });
-  if (response.statusCode == 200) {
-    var registerData = json.decode(response.body);
+  if (response.statusCode == 201) {
+    var registerData = jsonDecode(response.body);
     return new Login(allow: true, username: registerData["username"]);
   } else {
-    var registerData = json.decode(response.body);
+    var registerData = jsonDecode(response.body);
     return new Login(allow: false, username: registerData["username"]);
   }
 }
@@ -39,15 +39,14 @@ Future<Login> loginCheck(username, password) async {
         "username": username,
         "password": password,
       });
-  var loginData = json.decode(response.body);
   if (response.statusCode == 200) {
+    var loginData = jsonDecode(response.body);
     String username = loginData["username"];
-    var user = new Login(allow: true, username: username);
-    return user;
+    return new Login(allow: true, username: username);
+  } else {
+    new Login(allow: false, username: "Did not work");
   }
 }
-
-// register?username=testusername&password=password&first_name=bob&last_name=smith&email=test@gmail.com
 
 class Login {
   bool allow;

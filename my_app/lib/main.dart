@@ -90,6 +90,7 @@ class _LoginDemoState extends State<LoginDemo> {
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
+                controller: _usernameFilter,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'username',
@@ -101,6 +102,7 @@ class _LoginDemoState extends State<LoginDemo> {
                   left: 15.0, right: 15.0, top: 15, bottom: 0),
               //padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
+                controller: _passwordFilter,
                 obscureText: true,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
@@ -125,12 +127,12 @@ class _LoginDemoState extends State<LoginDemo> {
                   checkLogin() async {
                     var login = await loginCheck(
                         _usernameFilter.text, _passwordFilter.text);
-                    if (login.allow == true) {
-                      print("Success!");
+                    if (login.allow) {
+                      print("Successful Login!");
                       Navigator.push(context,
                           MaterialPageRoute(builder: (_) => HomePage()));
                     } else {
-                      print("Registration did not succeed");
+                      print("Login did not succeed");
                     }
                   }
 

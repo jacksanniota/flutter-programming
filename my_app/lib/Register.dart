@@ -106,7 +106,9 @@ class _RegisterState extends State<Register> {
                         _firstNameFilter.text,
                         _lastNameFilter.text,
                         _emailFilter.text);
-                    if (user.allow == true) {
+                    print(user.allow);
+                    print(user.username);
+                    if (user.allow) {
                       print("Success!");
                       Navigator.push(context,
                           MaterialPageRoute(builder: (_) => LoginDemo()));
@@ -118,7 +120,7 @@ class _RegisterState extends State<Register> {
                   checkRegister();
                 },
                 child: Text(
-                  'Login',
+                  'Create Account',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
